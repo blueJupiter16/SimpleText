@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    >
+
+    <!--Card View-->
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true"
+        android:elevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note Title "
+                android:id="@+id/ListItemNoteTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:maxLines="1"
+                android:textStyle="bold"
+
+                android:ellipsize="end"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is where the body of the note wil be displayed and more "
+                android:id="@+id/ListItemNoteBody"
+                android:textAppearance="?android:attr/textAppearance"
+                android:padding="10dp"
+                android:maxLines="1"
+                android:textStyle="italic"
+                android:layout_below="@id/ListItemNoteTitle"
+                android:ellipsize="end"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

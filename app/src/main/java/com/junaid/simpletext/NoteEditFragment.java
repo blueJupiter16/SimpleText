@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,7 +22,7 @@ import android.widget.Toast;
 public class NoteEditFragment extends Fragment {
 
     private EditText mTitle,mBody;
-    private Button mSave;
+   // private Button mSave;
     private long noteID;
     private String fragmentPurpose;
     private boolean saveButtonPressed = false;
@@ -41,7 +44,7 @@ public class NoteEditFragment extends Fragment {
 
         mTitle = (EditText) fragmentView.findViewById(R.id.note_edit_title_ID);
         mBody = (EditText) fragmentView.findViewById(R.id.note_edit_body_id);
-        mSave = (Button) fragmentView.findViewById(R.id.save_button);
+      // mSave = (Button) fragmentView.findViewById(R.id.save_button);
 
         if(this.getTag() == "NOTE_EDIT_FRAGMENT"){
             fragmentPurpose = "UPDATE";
@@ -51,7 +54,7 @@ public class NoteEditFragment extends Fragment {
 
 
 
-
+        setHasOptionsMenu(true);
 
         Intent intent = getActivity().getIntent();
         noteID = intent.getExtras().getLong(MainActivity.NOTE_ID_EXTRA);
@@ -59,7 +62,7 @@ public class NoteEditFragment extends Fragment {
         mBody.setText(intent.getExtras().getString(MainActivity.NOTE_MESSAGE_EXTRA,""));
 
 
-        mSave.setOnClickListener(new View.OnClickListener() {
+       /* mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -73,14 +76,42 @@ public class NoteEditFragment extends Fragment {
                 startActivity(intent);
 
             }
-        });
+        });*/
 
 
 
         return fragmentView;
     }
 
-   @Override
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.note_edit_fragment_menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.edit_menu_save:
+
+                //handle the click
+
+                saveButtonPressed = true;
+                updateOrInsert(fragmentPurpose);
+
+
+
+                Log.d("BUG1","Before starting new activity");
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
 

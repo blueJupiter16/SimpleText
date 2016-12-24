@@ -78,9 +78,7 @@ public class MainActivityFragment extends ListFragment {
         Note note = (Note)getListAdapter().getItem(info.position);
         switch (item.getItemId()){
 
-            case R.id.menu_edit:
-                launchDetailActivity(info.position, MainActivity.fragmentLaunch.EDIT);
-                return true;
+
             case R.id.menu_delete:
                 SimpleTextDbAdapter adapter = new SimpleTextDbAdapter(getActivity().getBaseContext());
                 adapter.open();
@@ -106,9 +104,6 @@ public class MainActivityFragment extends ListFragment {
         switch(f){
             case VIEW:
                 i.putExtra(MainActivity.NOTE_FRAGMENT_DISPLAY_EXTA,MainActivity.fragmentLaunch.VIEW);
-                break;
-            case EDIT:
-                i.putExtra(MainActivity.NOTE_FRAGMENT_DISPLAY_EXTA,MainActivity.fragmentLaunch.EDIT);
                 break;
 
         }

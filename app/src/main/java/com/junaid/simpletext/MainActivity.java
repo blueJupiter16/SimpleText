@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        
 
         Toast.makeText(this,"Back Presssed",Toast.LENGTH_SHORT).show();
         android.os.Process.killProcess(android.os.Process.myPid());
